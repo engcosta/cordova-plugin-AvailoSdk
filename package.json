@@ -1,0 +1,19 @@
+{
+  "name": "cordova-plugin-availosdk",
+  "version": "0.0.1",
+  "description": "AvailoSdk",
+  "cordova": {
+    "id": "cordova-plugin-AvailoSdk",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "author": "",
+  "license": "ISC"
+}

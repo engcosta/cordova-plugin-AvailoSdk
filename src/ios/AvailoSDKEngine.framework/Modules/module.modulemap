@@ -1,0 +1,11 @@
+framework module AvailoSDKEngine {
+  umbrella header "AvailoSDKEngine.h"
+
+  export *
+  module * { export * }
+}
+
+module AvailoSDKEngine.Swift {
+    header "AvailoSDKEngine-Swift.h"
+    requires objc
+}

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-AvailoSdk"
+ version="0.0.1"
+  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+   xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>AvailoSdkPlugin</name>
+    <js-module name="AvailoSdkPlugin" src="www/AvailoSdkPlugin.js">
+        <clobbers target="cordova.plugins.AvailoSdkPlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="AvailoSdkPlugin">
+                <param name="android-package" value="com.t2.availosdk.AvailoSdkPlugin" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/com/t2/availosdk/AvailoSdkPlugin.java" target-dir="src/com/t2/availosdk/AvailoSdkPlugin" />
+          <framework src="src/android/availo.gradle" custom="true" type="gradleReference"/>
+      <lib-file src="src/android/AvailoSdk.aar"/>
+    </platform>
+  <platform name="ios">
+<dependency id="cordova-plugin-add-swift-support" version="^2.0.2"/>
+<config-file parent="/*" target="config.xml">
+<feature name="AvailoSdkPlugin">
+<param name="ios-package" value="AvailoSdkPlugin" />
+</feature>
+</config-file>
+   <source-file src="src/ios/AvailoSdkPlugin.swift" />
+ <framework src="src/ios/AvailoSDKEngine.framework" custom="true" embed="true" />
+ <header-file src="src/ios/AvailoSDKEngine.framework/Headers/AvailoSDKEngine.h" />
+ <header-file src="src/ios/AvailoSDKEngine.framework/Headers/AvailoSDKEngine-Swift.h" />
+ <header-file src="src/ios/AvailoSDKEngine.framework/Headers/Header.h" />
+ <header-file src="src/ios/AvailoSDKEngine.framework/Headers/UICKeyChainStore.h" />
+ <source-file src="src/ios/AvailoService-Info.plist" />
+</platform>
+</plugin>

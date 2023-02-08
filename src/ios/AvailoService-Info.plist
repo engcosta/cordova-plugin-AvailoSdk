@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_KEY</key>
+	<string>Availo</string>
+	<key>BUNDLE_ID</key>
+	<string>sa.t2.TestAvailoEngine</string>
+	<key>AVAILO_BASE_URL</key>
+	<string>https://devmobileapi-availo.t2.sa/Api/</string>
+</dict>
+</plist>

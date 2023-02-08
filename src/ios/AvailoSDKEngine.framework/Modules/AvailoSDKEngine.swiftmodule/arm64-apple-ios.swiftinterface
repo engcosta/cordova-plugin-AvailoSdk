@@ -1,0 +1,111 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name AvailoSDKEngine
+@_exported import AvailoSDKEngine
+import CommonCrypto
+import CoreLocation
+import Foundation
+import MobileCoreServices
+import Swift
+import UIKit
+import _Concurrency
+public enum PushProvider : Swift.Int, Swift.Codable {
+  case FCM
+  case APNS
+  case pushWoosh
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct AccountInfo : AvailoSDKEngine.Payloadable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct LoginRequest : AvailoSDKEngine.Payloadable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ChangeStateRequest : AvailoSDKEngine.Payloadable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct RegisterRequest : AvailoSDKEngine.Payloadable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct AddFaceRequest : AvailoSDKEngine.Payloadable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct AddVoiceRequest : AvailoSDKEngine.Payloadable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct GeneralRequest : AvailoSDKEngine.Payloadable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct AttendRequest : AvailoSDKEngine.Payloadable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct AccountData : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct AnyCodable : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+extension AvailoSDKEngine.AnyCodable : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct AttendanceUiResult : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public protocol Payloadable : Swift.Decodable, Swift.Encodable {
+  func payload() -> Foundation.Data?
+  func multiPartPayload(boundary: Swift.String) -> Foundation.Data?
+  func multiPartAttendPayload(boundary: Swift.String) -> Foundation.Data?
+  func payloadPlain() -> Swift.String?
+}
+extension AvailoSDKEngine.Payloadable {
+  public func payload() -> Foundation.Data?
+  public func multiPartPayload(boundary: Swift.String) -> Foundation.Data?
+  public func multiPartAttendPayload(boundary: Swift.String) -> Foundation.Data?
+  public func payloadPlain() -> Swift.String?
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class GetLocation : ObjectiveC.NSObject, CoreLocation.CLLocationManagerDelegate {
+  public func run(callback: @escaping (CoreLocation.CLLocation?) -> Swift.Void)
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
+  @objc public func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: Swift.Error)
+  @objc deinit
+}
+public struct AvailoSDKEngine {
+  public init()
+  public func initialize(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func getAccountData(_ code: Swift.String, contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func getAccountInfoData(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func loginByCredentialsData(_ userName: Swift.String, _ password: Swift.String, contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func loginBySSOData(_ sso: Swift.String, contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func getRandomVoiceTextData(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func getRejectedRequestFilesData(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func getFilesCountByUserData(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func changeUserStatesData(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func registerImageData(_ imageBase64: Swift.String, contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func registerVoiceData(_ fileName: Swift.String, _ voiceTextId: Swift.String, contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func getVoiceEnableInfoData(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func validateRandomAttendanceData(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func getRandomTextData(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func addNewFaceData(_ imageBase64: Swift.String, contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func addNewVoiceData(_ voice64: Swift.String, _ voiceTextId: Swift.String, contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func AttendFaceData(_ base64: Swift.String, _ transactionType: Swift.String, contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func AttendVoiceData(_ fileName: Swift.String, _ voiceTextId: Swift.String, _ transactionType: Swift.String, contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func getLastTransactionsByUserIDData(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+  public func getUserProfileData(contentHandler: @escaping (Swift.Result<Any, Swift.Error>) -> Swift.Void)
+}
+extension AvailoSDKEngine.PushProvider : Swift.Equatable {}
+extension AvailoSDKEngine.PushProvider : Swift.Hashable {}
+extension AvailoSDKEngine.PushProvider : Swift.RawRepresentable {}
